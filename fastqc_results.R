@@ -33,7 +33,7 @@ trimmed_vs_untrimmed = data %>%
          pct_difference = (difference/untrimmed)*100)
 
 # raw difference
-ggplot(trimmed_vs_untrimmed) +
+p = ggplot(trimmed_vs_untrimmed) +
   geom_bar(mapping = aes(x = site, y = difference),
            stat = 'identity') +
   coord_flip() +
@@ -43,7 +43,7 @@ ggsave(p, filename = 'trimmed_vs_untrimmed_raw_difference.png', width = 10, heig
 
 
 # pct difference
-ggplot(trimmed_vs_untrimmed) +
+p = ggplot(trimmed_vs_untrimmed) +
   geom_bar(mapping = aes(x = site, y = pct_difference),
            stat = 'identity') +
   coord_flip() +
@@ -61,7 +61,7 @@ data = data[data$run == 'R1',]
 data = data[data$trimmed == 'TRUE',]
 
 # bar plot comparing runs
-ggplot(data) +
+p = ggplot(data) +
   geom_bar(mapping = aes(x = site, y = total_sequences, fill = as.character(date)),
            stat = 'identity', position = 'stack') +
   coord_flip() +
